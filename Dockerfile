@@ -15,9 +15,9 @@ ENV GRAPH_HOME /mnt/graphs
 # Install virtuoso + utils
 RUN git clone https://github.com/openlink/virtuoso-opensource.git \
     -b stable/7 /opt/virtuoso-opensource
-RUN cd /opt/virtuoso-opensource; bash autogen.sh; \
-    ./configure --prefix=/opt/virtuoso-build --enable-fct-vad; \
-    make; make install
+RUN cd /opt/virtuoso-opensource && bash autogen.sh \
+ && ./configure --prefix=/opt/virtuoso-build --enable-fct-vad \
+ && make && make install
 
 RUN chmod -R 755 /opt/virtuoso-build/bin/
 ENV PATH /opt/virtuoso-build/bin:$PATH
@@ -29,4 +29,4 @@ ENTRYPOINT ["virtuoso-t", "+foreground", "+configfile", "virtuoso.ini"]
 EXPOSE 9000
 
 # Maintainer
-MAINTAINER Maxime Deraspe
+MAINTAINER Maxime Deraspe <maximilien1er@gmail.com>
