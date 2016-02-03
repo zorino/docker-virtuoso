@@ -4,10 +4,10 @@ FROM centos:centos7
 # Install virtuoso dependencies
 RUN yum update -y
 RUN yum install -y git autoconf automake libtool flex bison \
-    gperf gawk m4 make openssl openssl-devel net-tools
+    gperf gawk m4 make openssl openssl-devel net-tools \
+ && mkdir /mnt/graphs
 
 # Create volume for graph data
-RUN mkdir /mnt/graphs
 VOLUME /mnt/graphs
 WORKDIR /mnt/graphs
 ENV GRAPH_HOME /mnt/graphs
@@ -21,6 +21,7 @@ RUN cd /opt/virtuoso-opensource && bash autogen.sh \
 
 RUN chmod -R 755 /opt/virtuoso-build/bin/
 ENV PATH /opt/virtuoso-build/bin:$PATH
+COPY virtuoso.ini /mnt/graphs
 
 # Exec on start
 ENTRYPOINT ["virtuoso-t", "+foreground", "+configfile", "virtuoso.ini"]
