@@ -21,7 +21,7 @@ RUN cd /opt/virtuoso-opensource && bash autogen.sh \
 
 RUN chmod -R 755 /opt/virtuoso-build/bin/
 ENV PATH /opt/virtuoso-build/bin:$PATH
-COPY virtuoso.ini /mnt/graphs
+COPY virtuoso.ini /mnt/graphs/virtuoso.ini
 
 # Exec on start
 ENTRYPOINT ["virtuoso-t", "+foreground", "+configfile", "virtuoso.ini"]
