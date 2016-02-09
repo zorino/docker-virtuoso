@@ -1,10 +1,14 @@
 # Linux OS
 FROM centos:centos7
 
+# Maintainer
+MAINTAINER Maxime Deraspe <maximilien1er@gmail.com>
+
 # Install virtuoso dependencies
-RUN yum update -y
-RUN yum install -y git autoconf automake libtool flex bison \
+RUN yum update -y && \
+    yum install -y git autoconf automake libtool flex bison \
     gperf gawk m4 make openssl openssl-devel net-tools \
+ && yum clean all \
  && mkdir /mnt/graphs
 
 # Create volume for graph data
@@ -28,6 +32,3 @@ ENTRYPOINT ["virtuoso-t", "+foreground", "+configfile", "virtuoso.ini"]
 
 # Expose Default Port
 EXPOSE 9000
-
-# Maintainer
-MAINTAINER Maxime Deraspe <maximilien1er@gmail.com>
