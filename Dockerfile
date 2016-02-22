@@ -2,7 +2,7 @@
 FROM centos:centos7
 
 # Maintainer
-MAINTAINER Maxime Deraspe <maximilien1er@gmail.com>
+MAINTAINER zorino <maximilien1er@gmail.com>
 
 # Install virtuoso dependencies
 RUN yum update -y && \
