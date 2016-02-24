@@ -5,7 +5,9 @@
 You can attach a volume into /mnt/graphs for persistent storage
 
 ```
-	docker pull zorino/centos-virtuoso
-	docker run -p 9000:9000 -v ./data:/mnt/graphs/ zorino/centos-virtuoso
+	docker pull zorino/docker-virtuoso
+	docker run -p 9000:9000 -v ./data:/mnt/graphs/ zorino/docker-virtuoso
 ```
+
+You can add your triple files inside ./data/raw_data folder so you can import it into docker afterward.
 
