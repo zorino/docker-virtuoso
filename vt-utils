@@ -1,0 +1,73 @@
+#!/bin/bash
+
+rootpath="$(dirname "${BASH_SOURCE[0]}")"
+extensions=('nt' 'nq' 'xml' 'n3' 'gz')
+
+function load () {
+    echo "# Loading #"
+    isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/load-graph.sql -i $1
+    exit
+}
+
+function fast-load () {
+    echo "# Fast Loading #"
+    isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/disable-indexing.sql
+    isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/load-graph.sql -i $1
+    isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/enable-indexing.sql
+    exit
+}
+
+function fct-install () {
+    echo "# FCT install #"
+    isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/fct-install.sql
+    exit
+}
+
+function fct-index () {
+    echo "# FCT indexing #"
+    isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/fct-indexing.sql
+    exit
+}
+
+function enable-federated-query () {
+    echo "# Federated Query #"
+    isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/enable-federated-query.sql
+    exit
+}
+
+
+function delete () {
+    echo "# Deleting Graph #"
+    isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/clear-graph.sql -i $1
+    exit
+}
+
+
+
+function help () {
+
+    echo "vt-utils : virtuoso utilities cmd line"
+
+    echo ""
+    echo "  load [graph]       load graph files from /mnt/graphs/raw_data volume into graph"
+    echo ""
+    echo "  fast-load [graph]  load graph files from /mnt/graphs/raw_data volume into graph"
+    echo "                     with indexing disabled, will reindex after the loading"
+    echo ""
+    echo "  fct-install        install faceted browser (fct) vad"
+    echo ""
+    echo "  fct-index          launch the fct indexing and ranking"
+    echo ""
+    echo "  delete [graph]     will delete graph from the triplestore"
+    echo ""
+
+    echo "  help               print this"
+    echo ""
+
+    exit
+}
+
+
+# main
+$@
+help
