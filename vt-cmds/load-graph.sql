@@ -12,9 +12,4 @@ select 'Loading data into $ARGV[$I] graph...';
 ld_dir ('/mnt/graphs/raw_data/', '*.*', '$ARGV[$I]');
 rdf_loader_run();
 
--- See if we have any errors
-select 'Looking for loading errors ...';
-select * from DB.DBA.load_list where ll_state <> 2;
-
-
 -- renable auto-indexing once finished with bulk operations
