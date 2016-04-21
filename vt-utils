@@ -6,8 +6,8 @@ extensions=('nt' 'nq' 'xml' 'n3' 'gz')
 function load () {
     echo "# Loading #"
     isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/load-graph.sql -i $1
-    sleep 10
-    isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/check-load_list
+    sleep 5
+    isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/check-load_list.sql
     exit
 }
 
