@@ -19,6 +19,7 @@ RUN yum update -y && \
  && yum clean all
 
 COPY vt-utils /opt/virtuoso-build/bin/
+COPY virtuoso* /opt/virtuoso-build/bin/
 COPY vt-cmds /opt/virtuoso-build/bin/vt-cmds
 
 # Create volume for graph data
@@ -26,10 +27,9 @@ VOLUME /mnt/graphs
 WORKDIR /mnt/graphs
 ENV PATH /opt/virtuoso-build/bin:$PATH
 ENV GRAPH_HOME /mnt/graphs
-ENV DBA_PWD dba
 
 # Exec on start
-ENTRYPOINT ["virtuoso-t", "+foreground", "+configfile", "virtuoso.ini"]
+ENTRYPOINT ["virtuoso-entry.sh"]
 
 # Expose Default Port
 EXPOSE 9000
