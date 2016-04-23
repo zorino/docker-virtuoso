@@ -6,7 +6,7 @@
 
 # take the virtuoso.ini file from /mnt/graphs/
 # otherwise takes the default one
-if [ -f /mnt/graphs/virtuoso.ini ]
+if [ -f '/mnt/graphs/virtuoso.ini' ]
 then
     virtuoso-t +foreground +configfile virtuoso.ini
 else
