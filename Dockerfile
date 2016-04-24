@@ -27,6 +27,7 @@ VOLUME /mnt/graphs
 WORKDIR /mnt/graphs
 ENV PATH /opt/virtuoso-build/bin:$PATH
 ENV GRAPH_HOME /mnt/graphs
+ENV DBA_PWD dba
 
 # Exec on start
 ENTRYPOINT ["virtuoso-entry.sh"]
