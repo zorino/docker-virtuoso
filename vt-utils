@@ -14,7 +14,7 @@ function load () {
 function fast-load () {
     echo "# Fast Loading #"
     isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/disable-indexing.sql
-    isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/load-graph.sql -i $1
+    isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/load-graph.sql -i $1 $2
     exit
 }
 

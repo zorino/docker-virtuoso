@@ -9,7 +9,7 @@ delete from DB.DBA.load_list;
 select 'Loading data into $ARGV[$I] graph...';
 --      <folder with data>  <pattern>    <default graph if no graph file specified>
 
-ld_dir ('/mnt/graphs/raw_data/', '*.*', '$ARGV[$I]');
+ld_dir ('$ARGV[0]', '*.*', '$ARGV[1]');
 rdf_loader_run();
 
 -- renable auto-indexing once finished with bulk operations
