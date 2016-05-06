@@ -14,7 +14,7 @@ docker run --name myvirtuoso -p 9000:9000 -v ./data:/mnt/graphs/ zorino/docker-v
 To load triples from cmd line, create a **raw_data folder** inside your volume (**/mnt/graphs/raw_data**), put you raw triple files inside it (*.nq, *.nt,..) and execute the vt-utils CLI.
 
 ```
-docker exec myvirtuoso vt-utils load 'http://mygraph.org'
+docker exec myvirtuoso vt-utils load '/mnt/graphs/raw_data' 'http://mygraph.org'
 ```
 
 For other commands :
