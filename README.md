@@ -23,16 +23,16 @@ docker exec myvirtuoso vt-utils
 
 vt-utils : virtuoso utilities cmd line
 
-  load [graph]       load graph files from /mnt/graphs/raw_data volume into graph
+  load [dir] [graph]         load graph files from [dir] volume into [graph]
 
-  fast-load [graph]  load graph files from /mnt/graphs/raw_data volume into graph
-                     with indexing disabled, will reindex after the loading
+  fast-load [dir] [graph]    load graph files from /mnt/graphs/raw_data volume into graph
+                             with indexing disabled, will reindex after the loading
 
-  fct-install        install faceted browser (fct) vad
+  fct-install                install faceted browser (fct) vad
 
-  fct-index          launch the fct indexing and ranking
+  fct-index                  launch the fct indexing and ranking
 
-  delete [graph]     will delete graph from the triplestore
+  delete [graph]             will delete graph from the triplestore
 
-  help               print this
+  help                       print this
 ```

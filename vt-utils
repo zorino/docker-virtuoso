@@ -5,7 +5,7 @@ extensions=('nt' 'nq' 'xml' 'n3' 'gz')
 
 function load () {
     echo "# Loading #"
-    isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/load-graph.sql -i $1
+    isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/load-graph.sql -i $1 $2
     sleep 5
     isql localhost:1111 dba $DBA_PWD $rootpath/vt-cmds/check-load_list.sql
     exit
@@ -56,23 +56,23 @@ function help () {
     echo "vt-utils : virtuoso utilities cmd line"
 
     echo ""
-    echo "  load [graph]       load graph files from /mnt/graphs/raw_data volume into graph"
+    echo "  load [graph]         load graph files from /mnt/graphs/raw_data volume into graph"
     echo ""
-    echo "  fast-load [graph]  load graph files from /mnt/graphs/raw_data volume into graph"
-    echo "                     will disable indexing before loading the triples"
+    echo "  fast-load [graph]    load graph files from /mnt/graphs/raw_data volume into graph"
+    echo "                       will disable indexing before loading the triples"
     echo ""
-    echo "  fct-install        install faceted browser (fct) vad"
+    echo "  fct-install          install faceted browser (fct) vad"
     echo ""
-    echo "  fct-index          launch the fct indexing and ranking"
+    echo "  fct-index            launch the fct indexing and ranking"
     echo ""
-    echo "  enable-indexing    enable indexing"
+    echo "  enable-indexing      enable indexing"
     echo ""
-    echo "  enable-federated   enable federated query"
+    echo "  enable-federated     enable federated query"
     echo ""
-    echo "  delete [graph]     will delete graph from the triplestore"
+    echo "  delete [graph]       will delete graph from the triplestore"
     echo ""
 
-    echo "  help               print this"
+    echo "  help                 print this"
     echo ""
 
     exit
