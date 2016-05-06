@@ -6,10 +6,10 @@
 delete from DB.DBA.load_list;
 
 -- see http://www.openlinksw.com/dataspace/dav/wiki/Main/VirtBulkRDFLoader
-select 'Loading data into $ARGV[$I] graph...';
+select 'Loading data into $ARGV[7] graph...';
 --      <folder with data>  <pattern>    <default graph if no graph file specified>
 
-ld_dir ('$ARGV[0]', '*.*', '$ARGV[1]');
+ld_dir ('$ARGV[6]', '*.*', '$ARGV[7]');
 rdf_loader_run();
 
 -- renable auto-indexing once finished with bulk operations
