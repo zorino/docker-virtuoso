@@ -6,11 +6,13 @@ MAINTAINER zorino <maximilien1er@gmail.com>
 
 # Install virtuoso + dependencies
 RUN yum update -y && \
-    yum install -y git autoconf automake libtool flex bison \
-    gperf gawk m4 make openssl openssl-devel net-tools \
+    yum install -y autoconf automake libtool flex bison \
+      gperf gawk m4 make openssl openssl-devel net-tools \
  && mkdir /mnt/graphs \
- && git clone https://github.com/openlink/virtuoso-opensource.git \
-    -b stable/7 /opt/virtuoso-opensource \
+ && cd /opt/
+ && curl https://github.com/openlink/virtuoso-opensource/releases/download/v7.2.4.2/virtuoso-opensource-7.2.4.2.tar.gz \
+    | tar xvz \
+ && mv virtuoso-opensource-7.2.4.2 virtuoso-opensource \
  && cd /opt/virtuoso-opensource && bash autogen.sh \
  && ./configure --prefix=/opt/virtuoso-build --enable-fct-vad \
  && make && make install && chmod -R 755 /opt/virtuoso-build/bin/ \
