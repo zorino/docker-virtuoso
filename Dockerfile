@@ -9,8 +9,8 @@ RUN yum update -y && \
     yum install -y autoconf automake libtool flex bison \
       gperf gawk m4 make openssl openssl-devel net-tools \
  && mkdir /mnt/graphs \
- && cd /opt/
- && curl https://github.com/openlink/virtuoso-opensource/releases/download/v7.2.4.2/virtuoso-opensource-7.2.4.2.tar.gz \
+ && cd /opt/ \
+ && curl -L https://github.com/openlink/virtuoso-opensource/releases/download/v7.2.4.2/virtuoso-opensource-7.2.4.2.tar.gz \
     | tar xvz \
  && mv virtuoso-opensource-7.2.4.2 virtuoso-opensource \
  && cd /opt/virtuoso-opensource && bash autogen.sh \
